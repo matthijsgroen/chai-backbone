@@ -11,6 +11,8 @@ Include `chai-backbone.js` in your test file, after `chai.js` (version 1.0.0-rc1
 
     <script src="chai-backbone.js"></script>
 
+Also this extension depends on [sinon](http://sinonjs.org/) and [chai-changes](https://github.com/matthijsgroen/chai-changes) so include these too.
+
 Use the assertions with chai's `expect` or `should` assertions.
 
 Assertions
