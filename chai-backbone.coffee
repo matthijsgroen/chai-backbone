@@ -39,7 +39,7 @@
       after: (context) ->
         negate = flag(context, 'negate')
         flag(context, 'negate', @negate)
-        context.assert @callback.calledOnce,
+        context.assert @callback.called,
           "expected to trigger #{trigger}",
           "expected not to trigger #{trigger}"
 

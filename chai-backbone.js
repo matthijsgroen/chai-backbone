@@ -31,7 +31,7 @@
           var negate, _ref;
           negate = flag(context, 'negate');
           flag(context, 'negate', this.negate);
-          context.assert(this.callback.calledOnce, "expected to trigger " + trigger, "expected not to trigger " + trigger);
+          context.assert(this.callback.called, "expected to trigger " + trigger, "expected not to trigger " + trigger);
           if (options["with"] != null) {
             context.assert((_ref = this.callback).calledWith.apply(_ref, options["with"]), "expected trigger to be called with " + (inspect(options["with"])) + ", but was called with " + (inspect(this.callback.args[0])) + ".", "expected trigger not to be called with " + (inspect(options["with"])) + ", but was");
           }

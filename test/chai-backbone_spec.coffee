@@ -10,6 +10,12 @@ describe 'Chai-Backbone matchers', ->
       m.should.trigger('change').when ->
         m.set fire: 'trigger'
 
+    it 'asserts if a trigger is fired multiple times', ->
+      m = new Backbone.Model
+      m.should.trigger('change').when ->
+        m.set fire: 'trigger'
+        m.set other: 'trigger'
+
     it 'asserts if a trigger is not fired', ->
       m = new Backbone.Model
       m.should.not.trigger('change:not_fire').when ->

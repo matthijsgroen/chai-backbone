@@ -19,6 +19,18 @@
           });
         });
       });
+      it('asserts if a trigger is fired multiple times', function() {
+        var m;
+        m = new Backbone.Model;
+        return m.should.trigger('change').when(function() {
+          m.set({
+            fire: 'trigger'
+          });
+          return m.set({
+            other: 'trigger'
+          });
+        });
+      });
       it('asserts if a trigger is not fired', function() {
         var m;
         m = new Backbone.Model;
