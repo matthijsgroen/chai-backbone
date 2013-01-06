@@ -1,6 +1,7 @@
-#= require ./../chai-backbone
+should = chai.should()
+expect = chai.expect
 
-describe 'Chai-Backbone', ->
+describe 'Chai-Backbone matchers', ->
 
   describe 'trigger / when', ->
 

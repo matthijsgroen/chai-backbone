@@ -10,6 +10,7 @@
   else
     # Other environment (usually <script> tag): plug in to global chai instance directly.
     chai.use chaiBackbone
+
 )((chai, utils) ->
   inspect = utils.inspect
   flag = utils.flag
