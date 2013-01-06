@@ -1,4 +1,3 @@
 #!/bin/bash
-xdg-open test/browser/index.html
-coffee -cw -o . . & coffee -cw -o test/ test/
+coffee -c -o . . && coffee -c -o test/ test/ && xdg-open test/browser/index.html
 

@@ -20,5 +20,14 @@
     "sinon": ">= 1.5.2",
     "chai-changes": ">= 0.8.0",
     "backbone": ">= 0.9.2"
-  }
+  },
+  "scripts": {
+    "test": "./test.sh"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/matthijsgroen/chai-backbone/blob/master/LICENSE"
+    }
+  ]
 }
