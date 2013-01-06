@@ -3,7 +3,7 @@
   "name": "chai-backbone",
   "description": "Backbone assertions for the Chai assertion library",
   "keywords": [ "test", "assertion", "assert", "testing", "backbone" ],
-  "version": "0.8.2",
+  "version": "0.8.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/matthijsgroen/chai-backbone"
