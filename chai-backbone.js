@@ -44,13 +44,13 @@
       return flag(this, 'routing', true);
     });
     routeTo = function(router, methodName, options) {
-      var consideredRouter, current_history, route, spy, _i, _len, _ref;
+      var consideredRouter, current_history, route, stub, _i, _len, _ref;
       if (options == null) {
         options = {};
       }
       current_history = Backbone.history;
       Backbone.history = new Backbone.History;
-      spy = sinon.spy(router, methodName);
+      stub = sinon.stub(router, methodName);
       this.assert(router._bindRoutes != null, 'provided router is not a Backbone.Router');
       router._bindRoutes();
       if (options.considering != null) {
@@ -67,9 +67,9 @@
       Backbone.history.loadUrl(route);
       Backbone.history = current_history;
       router[methodName].restore();
-      this.assert(spy.calledOnce, "expected `" + route + "` to route to " + methodName, "expected `" + route + "` not to route to " + methodName);
+      this.assert(stub.calledOnce, "expected `" + route + "` to route to " + methodName, "expected `" + route + "` not to route to " + methodName);
       if (options["arguments"] != null) {
-        return this.assert(spy.calledWith.apply(spy, options["arguments"]), "expected `" + methodName + "` to be called with " + (inspect(options["arguments"])) + ", but was called with " + (inspect(spy.args[0])) + " instead", "expected `" + methodName + "` not to be called with " + (inspect(options["arguments"])) + ", but was");
+        return this.assert(stub.calledWith.apply(stub, options["arguments"]), "expected `" + methodName + "` to be called with " + (inspect(options["arguments"])) + ", but was called with " + (inspect(stub.args[0])) + " instead", "expected `" + methodName + "` not to be called with " + (inspect(options["arguments"])) + ", but was");
       }
     };
     chai.Assertion.overwriteProperty('to', function(_super) {
