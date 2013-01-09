@@ -77,7 +77,7 @@
     # reset history to clear active routes
     Backbone.history = new Backbone.History
 
-    spy = sinon.spy router, methodName # spy on our expected method call
+    stub = sinon.stub router, methodName # stub on our expected method call
     @assert router._bindRoutes?, 'provided router is not a Backbone.Router'
 
     router._bindRoutes() # inject router routes into our history
@@ -92,20 +92,20 @@
     # fire our route to test
     Backbone.history.loadUrl route
 
-    # set back our history. The spy should have our collected info now
+    # set back our history. The stub should have our collected info now
     Backbone.history = current_history
     # restore the router method
     router[methodName].restore()
 
     # now assert if everything went according to spec
-    @assert spy.calledOnce,
+    @assert stub.calledOnce,
       "expected `#{route}` to route to #{methodName}",
       "expected `#{route}` not to route to #{methodName}"
 
     # verify arguments if they were provided
     if options.arguments?
-      @assert spy.calledWith(options.arguments...),
-        "expected `#{methodName}` to be called with #{inspect options.arguments}, but was called with #{inspect spy.args[0]} instead",
+      @assert stub.calledWith(options.arguments...),
+        "expected `#{methodName}` to be called with #{inspect options.arguments}, but was called with #{inspect stub.args[0]} instead",
         "expected `#{methodName}` not to be called with #{inspect options.arguments}, but was"
 
   chai.Assertion.overwriteProperty 'to', (_super) ->
