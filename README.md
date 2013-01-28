@@ -57,40 +57,41 @@ view.should.call('startAuthentication').when ->
 
 ### Node
 
-Do an `npm install chai-changes` to get up and running. Then:
+Do an `npm install chai-backbone` to get up and running. Then:
 
 ```javascript
 var chai = require("chai");
-var chaiChanges = require("chai-changes");
+var chaiBackbone = require("chai-backbone");
 
-chai.use(chaiChanges);
+chai.use(chaiBackbone);
 ```
 
 You can of course put this code in a common test fixture file; for an example using [Mocha][mocha]
 
 ### AMD
 
-Chai Changes supports being used as an [AMD][amd] module, registering itself anonymously (just like Chai). So,
-assuming you have configured your loader to map the Chai and Chai Changes files to the respective module IDs
-`"chai"` and `"chai-changes"`, you can use them as follows:
+Chai Backbone supports being used as an [AMD][amd] module, registering itself anonymously (just like Chai). So,
+assuming you have configured your loader to map the Chai and Chai
+Backbone files to the respective module IDs
+`"chai"` and `"chai-backbone"`, you can use them as follows:
 
 ```javascript
 define(function (require, exports, module) {
     var chai = require("chai");
-    var chaiChanges = require("chai-changes");
+    var chaiBackbone = require("chai-backbone");
 
-    chai.use(chaiChanges);
+    chai.use(chaiBackbone);
 });
 ```
 
 ### `<script>` tag
 
-If you include Chai Changes directly with a `<script>` tag, after the one for Chai itself, then it will
-automatically plug in to Chai and be ready for use:
+If you include Chai Backbone directly with a `<script>` tag, after the one for Chai itself,
+then it will automatically plug in to Chai and be ready for use:
 
 ```html
 <script src="chai.js"></script>
-<script src="chai-changes.js"></script>
+<script src="chai-backbone.js"></script>
 ```
 
 ## License
