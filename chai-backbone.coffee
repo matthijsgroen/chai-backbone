@@ -78,8 +78,7 @@
     Backbone.history = new Backbone.History
 
     unless (utils.type(router) is 'object') and (router instanceof Backbone.Router)
-      throw TypeError 'provided router is not a Backbone.Router'
-    expect(router).to.be.an.instanceOf Backbone.Router
+      throw new TypeError 'provided router is not a Backbone.Router'
 
     stub = sinon.stub router, methodName # stub on our expected method call
 

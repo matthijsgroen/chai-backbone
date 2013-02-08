@@ -51,9 +51,8 @@
       current_history = Backbone.history;
       Backbone.history = new Backbone.History;
       if (!((utils.type(router) === 'object') && (router instanceof Backbone.Router))) {
-        throw TypeError('provided router is not a Backbone.Router');
+        throw new TypeError('provided router is not a Backbone.Router');
       }
-      expect(router).to.be.an.instanceOf(Backbone.Router);
       stub = sinon.stub(router, methodName);
       router._bindRoutes();
       if (options.considering != null) {
