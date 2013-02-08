@@ -77,8 +77,11 @@
     # reset history to clear active routes
     Backbone.history = new Backbone.History
 
+    unless (utils.type(router) is 'object') and (router instanceof Backbone.Router)
+      throw TypeError 'provided router is not a Backbone.Router'
+    expect(router).to.be.an.instanceOf Backbone.Router
+
     stub = sinon.stub router, methodName # stub on our expected method call
-    @assert router._bindRoutes?, 'provided router is not a Backbone.Router'
 
     router._bindRoutes() # inject router routes into our history
     if options.considering? # if multiple routers are provided load their routes aswell

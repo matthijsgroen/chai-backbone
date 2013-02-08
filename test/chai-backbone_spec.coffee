@@ -39,11 +39,22 @@ describe 'Chai-Backbone matchers', ->
     beforeEach ->
       router = new routerClass
 
+    it 'validates if provided router is a Backbone.Router', ->
+      expect(->
+        "route1/ere".should.route.to { noRouter: 'check' }, 'subRoute'
+      ).to.throw TypeError, 'provided router is not a Backbone.Router'
+
     it 'checks if a method is trigger by route', ->
       "route1/sub".should.route.to router, 'subRoute'
       expect(->
         "route1/ere".should.route.to router, 'subRoute'
       ).to.throw 'expected `route1/ere` to route to subRoute'
+
+    it 'allows negation in route assertion', ->
+      "route1/ere".should.not.route.to router, 'subRoute'
+      expect(->
+        "route1/sub".should.not.route.to router, 'subRoute'
+      ).to.throw 'expected `route1/sub` not to route to subRoute'
 
     it 'verifies argument parsing', ->
       "route2/argVal".should.route.to router, 'routeWithArg', arguments: ['argVal']
