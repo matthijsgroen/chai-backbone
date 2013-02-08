@@ -71,14 +71,14 @@
     flag(this, 'routing', true)
 
   routeTo = (router, methodName, options = {}) ->
+    unless (typeof router is 'object') and (router instanceof Backbone.Router)
+      throw new TypeError('provided router is not a Backbone.Router')
+
     # move possible active Backbone history out of the way temporary
     current_history = Backbone.history
 
     # reset history to clear active routes
     Backbone.history = new Backbone.History
-
-    unless (utils.type(router) is 'object') and (router instanceof Backbone.Router)
-      throw new TypeError 'provided router is not a Backbone.Router'
 
     stub = sinon.stub router, methodName # stub on our expected method call
 
