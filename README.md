@@ -40,6 +40,7 @@ are extracted in the expected manner.
 
 ```coffeescript
 "page/3".should.route.to myRouter, "openPage", arguments: ["3"]
+"pages/3".should.not.route.to myRouter, "openPage"
 "page/3".should.route.to myRouter, "openPage", considering: [conflictingRouter]
 ```
 
