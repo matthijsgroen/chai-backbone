@@ -2,6 +2,7 @@ chai-backbone
 =============
 
 [![Build Status](https://travis-ci.org/matthijsgroen/chai-backbone.png?branch=master)](https://travis-ci.org/matthijsgroen/chai-backbone)
+[![NPM Version](https://fury-badge.herokuapp.com/js/chai-backbone.png)](http://badge.fury.io/js/chai-backbone)
 
 chai-backbone is an extension to the [chai](http://chaijs.com/) assertion library that
 provides a set of backbone specific assertions.
