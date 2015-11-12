@@ -60,7 +60,7 @@ describe 'Chai-Backbone matchers', ->
       "route2/argVal".should.route.to router, 'routeWithArg', arguments: ['argVal']
       expect(->
         "route2/ere".should.route.to router, 'routeWithArg', arguments: ['argVal']
-      ).to.throw 'expected `routeWithArg` to be called with [ \'argVal\' ], but was called with [ \'ere\' ] instead'
+      ).to.throw 'expected `routeWithArg` to be called with [ \'argVal\' ], but was called with [ \'ere\', null ] instead'
 
     it 'leaves the `to` keyword working properly', ->
       expect('1').to.be.equal '1'
