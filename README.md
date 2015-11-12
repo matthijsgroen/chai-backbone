@@ -22,16 +22,22 @@ Assertions
 
 ### `trigger`
 
-```coffeescript
-model.should.trigger("change", with: [model]).when ->
-  model.set attribute: "value"
+```javascript
+model.should.trigger("change", { with: [model] }).when(function() {
+  model.set({ attribute: "value" });
+});
 ```
 
 this can also be chained further:
 
-```coffeescript
-model.should.trigger("change").and.trigger("change:attribute").when -> model.set attribute: "value"
-model.should.trigger("change").and.not.trigger("reset").when -> model.set attribute: "value"
+```javascript
+model.should.trigger("change").and.trigger("change:attribute").when(function() {
+  model.set({ attribute: "value" });
+});
+
+model.should.trigger("change").and.not.trigger("reset").when(function() {
+  model.set({ attribute: "value" });
+});
 ```
 
 ### `route.to`
@@ -39,10 +45,10 @@ model.should.trigger("change").and.not.trigger("reset").when -> model.set attrib
 Tests if a route is delegated to the correct router and if the arguments
 are extracted in the expected manner.
 
-```coffeescript
-"page/3".should.route.to myRouter, "openPage", arguments: ["3"]
-"pages/3".should.not.route.to myRouter, "openPage"
-"page/3".should.route.to myRouter, "openPage", considering: [conflictingRouter]
+```javascript
+"page/3".should.route.to(myRouter, "openPage", { arguments: ["3"] });
+"pages/3".should.not.route.to(myRouter, "openPage");
+"page/3".should.route.to(myRouter, "openPage", { considering: [conflictingRouter] });
 ```
 
 ### `call`
@@ -50,9 +56,10 @@ are extracted in the expected manner.
 This assertion is ideal for testing view callbacks it will rebind view
 events to test DOM events
 
-```coffeescript
-view.should.call('startAuthentication').when ->
-  view.$('a.login').trigger 'click'
+```javascript
+view.should.call('startAuthentication').when(function() {
+  view.$('a.login').trigger('click');
+});
 ```
 
 ## Installation and Setup
@@ -98,7 +105,7 @@ then it will automatically plug in to Chai and be ready for use:
 
 ## License
 
-Copyright (c) 2012 Matthijs Groen
+Copyright (c) 2012-2015 Matthijs Groen
 
 MIT License (see the LICENSE file)
 

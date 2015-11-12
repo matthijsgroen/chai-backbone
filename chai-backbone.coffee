@@ -87,10 +87,12 @@
       consideredRouter._bindRoutes() for consideredRouter in options.considering
 
     # manually set the root option to prevent calling Backbone.history.start() which is global
-    Backbone.history.options =
-      root: '/'
-
+    Backbone.history.root = '/'
     route = flag(this, 'object')
+
+    Backbone.history.location =
+      pathname: '/'
+
     # fire our route to test
     Backbone.history.loadUrl route
 
