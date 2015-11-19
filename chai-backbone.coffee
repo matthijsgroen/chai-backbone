@@ -139,5 +139,22 @@
 
     flag(this, 'whenActions', definedActions)
 
+  # verify that a method calls through to base class
+  chai.Assertion.addMethod 'callSuper', (methodName) ->
+    object = flag(this, 'object')
+    base = object.constructor.__super__
+    sinon.spy base, methodName
+    value = object[methodName]()
+    try
+      @assert base[methodName].called,
+        "expected `#{methodName}` to have been called on base class",
+        "expected `#{methodName}` not to have been called on base class"
+      @assert base[methodName].returned(value),
+        "expected `#{methodName}` to have returned base class value",
+        "expected `#{methodName}` not to have returned base class value"
+    catch e
+      base[methodName].restore()
+      throw e
+    base[methodName].restore()
 )
 

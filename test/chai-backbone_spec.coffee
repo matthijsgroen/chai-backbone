@@ -93,3 +93,34 @@ describe 'Chai-Backbone matchers', ->
        viewInstance.should.call('eventCall').when ->
          viewInstance.$el.trigger('click')
 
+  describe 'callSuper', ->
+
+    PassClass = Backbone.View.extend
+      render: ->
+        return Backbone.View.prototype.render.call this, arguments
+
+    FailCallThroughClass = Backbone.View.extend
+      render: ->
+
+    FailReturnClass = Backbone.View.extend
+      render: ->
+        Backbone.View.prototype.render.call this, arguments
+        return
+
+    it 'asserts a method calls through to the super', ->
+      view = new PassClass
+      view.should.callSuper 'render'
+
+    it 'raises AssertionError if not called through to the super', ->
+      view = new FailCallThroughClass
+      expect(->
+        view.should.callSuper 'render'
+      ).to.throw /been called/
+
+    it 'raises AssertionError if not super return not returned', ->
+      view = new FailReturnClass
+      expect(->
+        view.should.callSuper 'render'
+      ).to.throw /return/
+
+
